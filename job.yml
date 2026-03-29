@@ -1,0 +1,11 @@
+$schema: https://azuremlschemas.azureedge.net/latest/commandJob.schema.json
+command: >
+  python train.py --epochs 5
+code: .
+environment:
+  conda_file: environment.yml
+  image: mcr.microsoft.com/azureml/openmpi4.1.0-ubuntu20.04:latest
+compute: azureml:mamdouh
+display_name: azureml-playground-train
+experiment_name: azureml-playground-experiment
+description: "Tiny training job from Git-backed repo"

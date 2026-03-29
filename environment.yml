@@ -1,0 +1,10 @@
+name: azureml-playground-env
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.8
+  - pip
+  - pip:
+      - azureml-mlflow
+      - azure-ai-ml
