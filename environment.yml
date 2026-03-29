@@ -1,11 +1,13 @@
-name: azureml-playground-env
+name: iris-env-v2
 channels:
   - conda-forge
   - defaults
 dependencies:
-  - python=3.8
-  - scikit-learn
+  - python=3.10
   - pip
   - pip:
-      - azureml-mlflow
-      - azure-ai-ml
+      - azureml-inference-server-http
+      - joblib
+      - numpy
+      - scikit-learn
+      - pandas
