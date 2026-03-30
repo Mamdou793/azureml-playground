@@ -1,18 +1,34 @@
-This project demonstrates a complete, production‑grade machine learning workflow on Azure Machine Learning, starting from training a model and ending with a fully deployed Managed Online Endpoint that serves real‑time predictions.
-It’s intentionally simple (Iris dataset + Logistic Regression) so the focus stays on the MLOps pipeline, not the model complexity.
+A lightweight, cross‑platform desktop application built with Avalonia UI and .NET 8, performing real‑time Iris flower classification using a trained machine learning model.
+This project demonstrates end‑to‑end engineering: model integration, UI design, packaging, and native macOS app distribution.
 
 
-This repository contains everything needed to train a scikit‑learn model, register it in Azure ML, package a custom inference environment, deploy the model to a Managed Online Endpoint, send real‑time predictions, version and track the entire workflow in Git
+<img width="414" height="441" alt="Screenshot 2026-03-30 at 8 13 14 PM" src="https://github.com/user-attachments/assets/fb1c9442-b608-4f8a-a681-dd63d893bf36" />
+
+<img width="414" height="441" alt="Screenshot 2026-03-30 at 8 14 02 PM" src="https://github.com/user-attachments/assets/d48b8654-a19b-4cf0-87ff-945f12ce42e9" />
+
+
+✨ Features
+
+Native macOS .app bundle with a custom icon
+
+Self‑contained — no .NET installation required
+
+Clean Avalonia UI with responsive layout
+
+Local ML inference (no cloud dependency)
+
+Cross‑platform codebase (macOS, Windows, Linux)
+
+Simple, intuitive workflow for entering iris measurements
+
+Instant prediction output with confidence values
 
 
 The model is trained using a simple Logistic Regression classifier on the Iris dataset.
 
-train.py:
-
-Loads the dataset, trains the model, saves the artifact to outputs/iris_logreg.pkl, (Optional) Registers the model in Azure ML. This script can be run locally or as an Azure ML job.
-
 
 Deployment is done via CLI:
+
 az ml online-deployment create \
   --name iris-deployment \
   --endpoint-name iris-endpoint-26970 \
@@ -20,28 +36,45 @@ az ml online-deployment create \
   --all-traffic
 
 
-Invoking the Endpoint:
-A sample request is included:
+✨ How to Run (macOS)
 
-json
-{
-  "input_data": [[5.1, 3.5, 1.4, 0.2]]
-}
+Download the latest release ZIP from the Releases page.
 
-Invoke using:
+Extract the ZIP — you’ll get IrisClassifier.app.
 
-bash
-az ml online-endpoint invoke \
-  --name iris-endpoint-26970 \
-  --request-file sample_request.json
-  
-Example output:
+On first launch, macOS may warn about an unverified developer.
 
-Code
-"[0]"
+Right‑click the app → Open
+
+Confirm you want to run it
+
+The app will open normally from then on.
 
 
+✨ How It Works
 
-This project demonstrates:
+The app uses a trained ML model to classify iris flowers into:
 
-How to structure ML code for Azure ML, how to build and register models, how to create custom inference environments, how to deploy real-time endpoints, how to debug container startup issues, and how to version everything in Git
+Setosa
+
+Versicolor
+
+Virginica
+
+The model takes four numeric inputs:
+
+Sepal Length
+
+Sepal Width
+
+Petal Length
+
+Petal Width
+
+The UI collects these values, sends them to the model, and displays the predicted class.
+
+
+✨ Tech Stack
+
+<img width="365" height="129" alt="Screenshot 2026-03-30 at 8 26 48 PM" src="https://github.com/user-attachments/assets/ccc34c6a-0a7a-438e-a7be-911396ad97f9" />
+
